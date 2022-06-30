@@ -31,6 +31,6 @@ def create_dataset():
     new_df = pd.DataFrame(my_dict)
 
     # Creates excel file
-    new_df.to_excel('test.xlsx', sheet_name='sheet1', index=False)
+    new_df.to_excel('fake_dataset.xlsx', sheet_name='sheet1', index=False)
 
 create_dataset()
