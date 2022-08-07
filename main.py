@@ -4,21 +4,20 @@ import random
 def create_dataset():
 
     # Creates a dataframe based on excel file informed by the user
-    file_name = input('Insert the file name in excel format:')
-    df = pd.read_excel(file_name)
+    df = pd.read_excel('data.xlsx', sheet_name='Sheet1')
 
     # Gets the list of relevant columns and split the columns into a list of strings
-    columns = input('Inform the column names to be used (separate each column by comma)')
+    columns = input('Inform the column names to be used (separate each column by comma): ')
     list_columns = columns.split(",")
 
     # Gets the number of rows
-    number_rows = int(input('Inform the number of rows the table needs to have'))
+    number_rows = int(input('Inform the number of rows the table needs to have: '))
 
     # Gets the data from the df based on the columns
     my_dict = {}
     for col in list_columns:
         col = col.strip()
-        my_dict[col] = [cell for cell in df[col].tolist() if cell != None or pd.isna(cell) == False]
+        my_dict[col] = [cell for cell in df[col].tolist() if cell != None and pd.isna(cell) == False]
 
     # Gets distinct values from these columns
     for key in my_dict:
